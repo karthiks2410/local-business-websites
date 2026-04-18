@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ReactNode, ButtonHTMLAttributes } from "react";
+import { ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline" | "gold";
   size?: "sm" | "md" | "lg";
   href?: string;
   className?: string;
   isLoading?: boolean;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 export function Button({
@@ -22,7 +25,8 @@ export function Button({
   className,
   isLoading,
   disabled,
-  ...props
+  type = "button",
+  onClick,
 }: ButtonProps) {
   const baseStyles = "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
@@ -59,7 +63,8 @@ export function Button({
       whileTap={{ scale: 0.98 }}
       className={classes}
       disabled={disabled || isLoading}
-      {...props}
+      type={type}
+      onClick={onClick}
     >
       {isLoading ? (
         <span className="flex items-center gap-2">
