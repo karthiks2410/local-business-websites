@@ -1,16 +1,5 @@
 import { Metadata } from "next";
-import {
-  Dumbbell,
-  Droplets,
-  Heart,
-  Lock,
-  Shield,
-  Apple,
-  Users,
-  Award,
-  Expand,
-  Target,
-} from "lucide-react";
+import { Shield } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Button } from "@/components/Button";
 import { facilities } from "@/lib/config";
@@ -18,19 +7,6 @@ import { facilities } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Facilities",
   description: "Explore our world-class gym facilities - premium equipment, steam room, certified trainers, and more.",
-};
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Dumbbell,
-  Droplets,
-  Heart,
-  Lock,
-  Shield,
-  Apple,
-  Users,
-  Award,
-  Expand,
-  Target,
 };
 
 export default function FacilitiesPage() {
@@ -54,24 +30,21 @@ export default function FacilitiesPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {facilities.map((facility) => {
-              const IconComponent = iconMap[facility.icon] || Dumbbell;
-              return (
-                <StaggerItem key={facility.name}>
-                  <div className="group p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-[#C9A962]/30 hover:bg-white/[0.07] transition-all duration-300">
-                    <div className="w-14 h-14 mb-6 bg-gradient-to-br from-[#C9A962] to-[#B8960B] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <IconComponent className="w-7 h-7 text-black" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {facility.name}
-                    </h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      {facility.description}
-                    </p>
+            {facilities.map((facility) => (
+              <StaggerItem key={facility.name}>
+                <div className="group p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-[#C9A962]/30 hover:bg-white/[0.07] transition-all duration-300">
+                  <div className="w-14 h-14 mb-6 bg-gradient-to-br from-[#C9A962] to-[#B8960B] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform text-3xl">
+                    {facility.emoji}
                   </div>
-                </StaggerItem>
-              );
-            })}
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {facility.name}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {facility.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
           </StaggerContainer>
         </div>
       </section>
