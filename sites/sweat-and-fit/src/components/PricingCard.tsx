@@ -10,7 +10,7 @@ interface PricingCardProps {
   description: string;
   price: number;
   duration: string;
-  features: string[];
+  features: readonly string[];
   popular?: boolean;
   premium?: boolean;
   className?: string;
