@@ -114,19 +114,16 @@ export default function HomePage() {
             <span className="text-sm">{siteConfig.location.city}</span>
           </motion.div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator - CSS animation instead of JS */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <div className="animate-bounce">
               <ChevronDown className="w-8 h-8 text-zinc-500" />
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -169,16 +166,14 @@ export default function HomePage() {
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {facilities.map((facility) => (
               <StaggerItem key={facility.name}>
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="facility-card p-6 bg-zinc-900 rounded-2xl border border-zinc-800 text-center cursor-pointer"
+                <div
+                  className="facility-card p-6 bg-zinc-900 rounded-2xl border border-zinc-800 text-center cursor-pointer hover:scale-[1.02] hover:-translate-y-1 transition-transform duration-200"
                 >
                   <div className="text-5xl mb-4">{facility.emoji}</div>
                   <h3 className="text-white font-semibold text-sm md:text-base">
                     {facility.name}
                   </h3>
-                </motion.div>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -207,9 +202,8 @@ export default function HomePage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {classes.map((classItem) => (
               <StaggerItem key={classItem.name}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="relative group overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-[#C9A962]/30 transition-all"
+                <div
+                  className="relative group overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-[#C9A962]/30 hover:-translate-y-2 transition-all duration-200"
                 >
                   {/* Placeholder Image */}
                   <div className="h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
@@ -231,7 +225,7 @@ export default function HomePage() {
                       <span>{classItem.level}</span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
