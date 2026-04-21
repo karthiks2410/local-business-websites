@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { Check, Star, Crown } from "lucide-react";
 import { Button } from "./Button";
 
@@ -27,11 +26,9 @@ export function PricingCard({
   className,
 }: PricingCardProps) {
   return (
-    <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 300 }}
+    <div
       className={cn(
-        "relative flex flex-col p-6 rounded-2xl border transition-all duration-300",
+        "relative flex flex-col p-6 rounded-2xl border transition-all duration-200 hover:-translate-y-2 hover:scale-[1.01]",
         popular
           ? "bg-white/5 border-white/30 shadow-xl shadow-white/5"
           : premium
@@ -115,6 +112,6 @@ export function PricingCard({
       >
         Get Started
       </Button>
-    </motion.div>
+    </div>
   );
 }

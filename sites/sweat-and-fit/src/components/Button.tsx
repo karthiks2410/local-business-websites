@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -28,7 +27,7 @@ export function Button({
   type = "button",
   onClick,
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseStyles = "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]";
 
   const variants = {
     primary:
@@ -58,9 +57,7 @@ export function Button({
   }
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <button
       className={classes}
       disabled={disabled || isLoading}
       type={type}
@@ -93,6 +90,6 @@ export function Button({
       ) : (
         children
       )}
-    </motion.button>
+    </button>
   );
 }
