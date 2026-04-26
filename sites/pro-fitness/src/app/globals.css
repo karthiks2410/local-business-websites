@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --primary: #C9A962;
+  --accent: #B8960B;
+  --card: #18181B;
+  --card-border: #27272A;
+  --muted: #A1A1AA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-oswald);
+}
+
+/* Smooth scrolling - respects reduced motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar - only on desktop */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #27272A;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3F3F46;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+}
+
+/* Selection */
+::selection {
+  background: #C9A962;
+  color: black;
+}
+
+/* Focus outline */
+:focus-visible {
+  outline: 2px solid #C9A962;
+  outline-offset: 2px;
+}
+
+/* Gradient text utility - Muted Gold gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #C9A962 0%, #D4B876 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Static gradient background */
+.bg-gradient-animated {
+  background: linear-gradient(-45deg, #000000, #0A0A0A);
+}
+
+/* Shimmer effect for loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Facility card hover glow */
+.facility-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+}
+
+.facility-card:hover {
+  border-color: #C9A962;
+  box-shadow: 0 0 20px rgba(201, 169, 98, 0.15);
+}
