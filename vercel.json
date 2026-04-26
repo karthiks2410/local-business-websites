@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd sites/pro-fitness && npm run build",
+  "outputDirectory": "sites/pro-fitness/.next",
+  "framework": "nextjs"
+}
